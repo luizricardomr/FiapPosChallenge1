@@ -1,0 +1,6 @@
+@FIAP.NET.Grupo13.CadastroDeContatos_HostAddress = http://localhost:5238
+
+GET {{FIAP.NET.Grupo13.CadastroDeContatos_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
