@@ -30,7 +30,8 @@ namespace FIAP.NET.Grupo13.CadastroDeContatos.Configuration
 
             builder.Services.AddAuthorization(opt =>
             {
-                opt.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
+                opt.AddPolicy("Administrador", policy => policy.RequireRole("Administrador"));
+                opt.AddPolicy("Usuario", policy => policy.RequireRole("Usuario"));
             });
 
             return builder;

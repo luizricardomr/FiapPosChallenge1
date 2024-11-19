@@ -1,5 +1,6 @@
 ﻿using FIAP.NET.Grupo13.CadastroDeContatos.Infrastructure;
 using FIAP.NET.Grupo13.CadastroDeContatos.Infrastructure.Repository;
+using FIAP.NET.Grupo13.CadastroDeContatos.Service;
 using FIAP.NET.Grupo13.CadastroDeContatos.Service.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,30 +13,19 @@ namespace FIAP.NET.Grupo13.CadastroDeContatos.Controllers
     public class ContatoController : ControllerBase
     {
         private readonly BaseLogger<ContatoController> _logger;
-        private readonly IContatoRepository _repository;
+        private readonly IContatoService _contatoService;
 
-        public ContatoController(BaseLogger<ContatoController> logger, IContatoRepository repository)
+        public ContatoController(BaseLogger<ContatoController> logger, 
+            IContatoService contatoService)
         {
             _logger = logger;
-            _repository = repository;
-        }
-
-        [HttpGet("GetDDD")]
-        public async Task<IEnumerable<CodigoDDD>> GetDDD()
-        {
-            return await _repository.GetAllDDD();
-        }
-
-        [HttpGet("GetDDD/{id}")]
-        public async Task<CodigoDDD> GetDDD(int id)
-        {
-            return (await _repository.GetAllDDD(id)).FirstOrDefault();
+            _contatoService = contatoService;
         }
 
         [HttpGet("GetContatoPorDDD/{id}")]
-        public async Task<Contato> GetContatoPorDDD(int id)
+        public async Task<IEnumerable<Contato>> GetContatoPorDDD(int id)
         {
-            return (await _repository.GetContatoByDDD(id)).FirstOrDefault();
+            return await _contatoService.GetContatoByDDD(id);
         }
 
         [HttpPost]

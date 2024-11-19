@@ -9,10 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-#region DI
 builder.Services.AddDependecyInjector();
-#endregion
-
+builder.Services.AddMemoryCache();
 builder.Services.AddSwaggerConfiguration();
 
 
