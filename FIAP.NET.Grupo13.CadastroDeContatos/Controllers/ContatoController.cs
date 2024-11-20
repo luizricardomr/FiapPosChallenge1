@@ -25,6 +25,7 @@ namespace FIAP.NET.Grupo13.CadastroDeContatos.Controllers
         [HttpGet("GetContatoPorDDD/{id}")]
         public async Task<IEnumerable<Contato>> GetContatoPorDDD(int id)
         {
+            throw new Exception("Teste");
             return await _contatoService.GetContatoByDDD(id);
         }
 
